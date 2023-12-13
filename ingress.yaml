@@ -1,16 +1,8 @@
-# Chart values for the Camunda Platform 8 Helm chart in combined Ingress setup.
-
-# This file deliberately contains only the values that differ from the defaults.
-# For changes and documentation, use your favorite diff tool to compare it with:
-# https://github.com/camunda/camunda-platform-helm/blob/main/charts/camunda-platform
-
-# IMPORTANT: Make sure to change "camunda.example.com" to your domain.
-
 global:
   ingress:
     enabled: true
     className: nginx
-    host: "camunda.dosvak.org"
+    host: "Camunda-kube.acheron-tech.com"
     tls:
       # Ingress.tls.enabled if true, then tls is configured on the ingress resource. If enabled the Ingress.host need to be defined.
       enabled: false
@@ -18,30 +10,30 @@ global:
       secretName: "mycert"
   identity:
     auth:
-      publicIssuerUrl: "https://camunda.dosvak.org/auth/realms/camunda-platform"
+      publicIssuerUrl: "https://Camunda-kube.acheron-tech.com/auth/realms/camunda-platform"
       operate:
-        redirectUrl: "http://camunda.dosvak.org/operate"
+        redirectUrl: "http://Camunda-kube.acheron-tech.com/operate"
       tasklist:
-        redirectUrl: "http://camunda.dosvak.org/tasklist"
+        redirectUrl: "http://Camunda-kube.acheron-tech.com/tasklist"
       optimize:
-        redirectUrl: "http://camunda.dosvak.org/optimize"
+        redirectUrl: "http://Camunda-kube.acheron-tech.com/optimize"
       webModeler:
-        redirectUrl: "http://camunda.dosvak.org/modeler"
+        redirectUrl: "http://Camunda-kube.acheron-tech.com/modeler"
 
 identity:
   contextPath: "/identity"
-  fullURL: "https://camunda.dosvak.org/identity"
+  fullURL: "https://Camunda-kube.acheron-tech.com/identity"
   # Keycloak configuration, for the keycloak dependency chart which is used by identity
   keycloak: # see: http://github.com/bitnami/charts/tree/master/bitnami/keycloak#parameters
     ingress: # see: http://www.keycloak.org/server/reverseproxy
       enabled: true
       ingressClassName: nginx
-      hostname: "camunda.dosvak.org"
+      hostname: "Camunda-kube.acheron-tech.com"
     extraEnvVars: # see: http://github.com/bitnami/bitnami-docker-keycloak#configuration
       - name: KEYCLOAK_PROXY_ADDRESS_FORWARDING
         value: "true"
       - name: KEYCLOAK_EXTRA_ARGS
-        value: "-Dkeycloak.frontendUrl=https://camunda.dosvak.org/auth"
+        value: "-Dkeycloak.frontendUrl=https://Camunda-kube.acheron-tech.com/auth"
 operate:
   contextPath: "/operate"
   ingress:
@@ -51,7 +43,7 @@ operate:
       ingress.kubernetes.io/rewrite-target:
       nginx.ingress.kubernetes.io/ssl-redirect: "false"
     path: /
-    host: "camunda.dosvak.org"
+    host: "Camunda-kube.acheron-tech.com"
     tls:
       enabled: false
       secretName: ""
@@ -65,7 +57,7 @@ optimize:
       ingress.kubernetes.io/rewrite-target:
       nginx.ingress.kubernetes.io/ssl-redirect: "false"
     path: /
-    host: "camunda.dosvak.org"
+    host: "Camunda-kube.acheron-tech.com"
     tls:
       enabled: false
       secretName: ""
@@ -79,7 +71,7 @@ tasklist:
       ingress.kubernetes.io/rewrite-target:
       nginx.ingress.kubernetes.io/ssl-redirect: "false"
     path: /
-    host: "camunda.dosvak.org"
+    host: "Camunda-kube.acheron-tech.com"
     tls:
       enabled: false
       secretName: ""
@@ -93,4 +85,4 @@ zeebe-gateway:
   ingress:
     enabled: true
     className: nginx
-    host: "zeebe.camunda.dosvak.org"
+    host: "zeebe.Camunda-kube.acheron-tech.com"
