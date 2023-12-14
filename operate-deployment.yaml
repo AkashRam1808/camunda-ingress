@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: operate-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: camunda-operate
+  template:
+    metadata:
+      labels:
+        app: camunda-operate
+    spec:
+      containers:
+      - name: operate-container
+        image: camunda/identity:latest
+        ports:
+        - containerPort: 8081
