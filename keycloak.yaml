@@ -53,8 +53,4 @@ spec:
               containerPort: 7600
             - name: https
               containerPort: 8443
-          readinessProbe:
-            httpGet:
-              scheme: HTTPS
-              path: /health/ready
-              port: 8443
+
