@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zeebe-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: camunda-zeebe
+  template:
+    metadata:
+      labels:
+        app: camunda-zeebe
+    spec:
+      containers:
+      - name: zeebe-container
+        image: camunda/zeebe:latest
+        ports:
+        - containerPort: 8081
